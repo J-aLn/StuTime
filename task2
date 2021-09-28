@@ -1,0 +1,57 @@
+package itech2306.lab2;
+import java.util.Scanner;
+public class Task2 {
+    public static void main(String[] args) {
+        String[] dayNames={"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
+        String[] monthNames={"","January","February","March","April","May","June","July","August","September","October","November","December"};
+        int selection = 1;
+        int week = 1;
+        int month = 0;
+        int day = 0;
+        boolean check = false;
+        do{
+            do {
+                System.out.print("请输入一个周数(1-4):");
+                Scanner wk =new Scanner(System.in);
+                if (wk.hasNextInt()){
+                    week=wk.nextInt();
+                    check= week >= 1 && week <= 4;
+                }
+            }while (!check);
+            check = false;
+            do {
+                System.out.print("请输入一个天数(1-7):");
+                Scanner dy =new Scanner(System.in);
+                if (dy.hasNextInt()){
+                    day=dy.nextInt();
+                    check= day >= 1 && day <= 7;
+                }
+            }while (!check);
+            check=false;
+            do {
+                System.out.print("请输入一个月数(1-12):");
+                Scanner moh = new Scanner(System.in);
+                if (moh.hasNextInt()){
+                    month = moh.nextInt();
+                    check = month >= 1 && month <= 12;
+                }
+            }while (!check);
+            if(week==1)
+                System.out.println("1st " + dayNames[day-1] + " of " + monthNames[month]);
+            else if (week==2)
+                System.out.println("2nd " + dayNames[day-1] + " of " + monthNames[month]);
+            else if (week==3)
+                System.out.println("3rd " + dayNames[day-1] + " of " + monthNames[month]);
+            else
+                System.out.println("4st " + dayNames[day-1] + " of " + monthNames[month]);
+            do {
+                System.out.println("Do you want to enter another date? (1 = yes, 0 = no)");
+                Scanner select =new Scanner(System.in);
+                if (select.hasNextInt()) {
+                    selection = select.nextInt();
+                    check = selection == 1 || selection == 0;
+                }
+            }while (!check);
+        }while (selection==1);
+    }
+}
